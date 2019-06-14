@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'product_manager.dart';
 
-const _appName = "Daily Connection";
+import './pages/auth.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,11 +16,7 @@ class MyApp extends StatelessWidget {
           accentColor: Colors.deepPurple,
         ),
         debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          appBar: AppBar(
-              elevation: 0.0,
-              title: Text(_appName)),
-          body: ProductManager(),
-        ));
+        home: AuthPage()
+      );
   }
 }

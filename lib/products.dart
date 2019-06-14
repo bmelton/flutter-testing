@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+import './pages/product.dart';
+
 class Products extends StatelessWidget {
-  final List<String> products;
+  final List<Map<String, String>> products;
 
   Products([this.products = const []]);
 
@@ -10,11 +12,22 @@ class Products extends StatelessWidget {
     return Card(
       child: Column(
         children: <Widget>[
-          Image.asset('assets/food.jpg'),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(
+                builder: (BuildContext context) => ProductPage(product: products[index])
+              )).then((value) {
+                if(value == true) {
+                  print(value);
+                }
+              });
+            },
+            child: Image.asset(products[index]['image']),
+          ),
           Padding( 
             padding: EdgeInsets.all(12.0),
-            child: Text(products[index])
-          )
+            child: Text(products[index]['title'])
+          ),
         ]
       )
     );
@@ -38,29 +51,3 @@ class Products extends StatelessWidget {
     return productCard;
   }
 }
-
-/*
-class Products extends StatelessWidget {
-  final List<String> products;
-
-  Products([this.products = const []]);
-
-  @override
-  Widget build(BuildContext build) {
-    return Column(
-        children: products
-            .map((product) => Card(
-                    child: Column(children: <Widget>[
-                  Image.asset('assets/food.jpg'),
-                  Padding(
-                    padding: EdgeInsets.all(12.0),
-                    child: Text(
-                      product,
-                      style: TextStyle(fontWeight: FontWeight.w500),
-                    ),
-                  )
-                ])))
-            .toList());
-  }
-}
-*/
