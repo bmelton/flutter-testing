@@ -4,7 +4,7 @@ import 'package:flutter/rendering.dart';
 import './pages/product.dart';
 
 class Products extends StatelessWidget {
-  final List<Map<String, String>> products;
+  final List<Map> products;
 
   Products([this.products = const []]);
 
@@ -14,11 +14,9 @@ class Products extends StatelessWidget {
         children: <Widget>[
           GestureDetector(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(
-                builder: (BuildContext context) => ProductPage(product: products[index])
-              )).then((value) {
+              Navigator.pushNamed<bool>(context, '/product/' + index.toString())
+              .then((value) {
                 if(value == true) {
-                  print(value);
                 }
               });
             },

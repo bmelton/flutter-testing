@@ -19,7 +19,30 @@ class ProductPage extends StatelessWidget {
           ),
           RaisedButton(
             child: Text('Delete ' + product['title']), 
-            onPressed: () => Navigator.pop(context, true)
+            onPressed: () => {
+              showDialog(context: context, builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text("Confirm deletion?"),
+                    content: Text("This will delete this product, which cannot be undone."),
+                    actions: <Widget>[
+                      FlatButton(
+                        child: Text('No, do not delete'),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        }
+                      ),
+                      FlatButton(
+                        child: Text('DELETE'),
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.pop(context, true);
+                        }
+                      ),
+                    ],
+                  );
+                }
+              )
+            }
           )
         ]
       )
