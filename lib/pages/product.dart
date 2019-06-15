@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 class ProductPage extends StatelessWidget {
   final Map product;
 
+  String priceString;
+
   ProductPage({this.product});
 
   @override
   Widget build(BuildContext context) {
+    priceString = "Buy now: \$" + product['price'].toString();
+
     return Scaffold(
       appBar: AppBar(
         title: Text(product['title']),
@@ -15,8 +19,26 @@ class ProductPage extends StatelessWidget {
         children: <Widget>[
           Image.asset(product['image']),
           Center(
-            child: Text(product['description']),
+            child: Container(
+              padding: EdgeInsets.all(12.0),
+              child: Column(
+                children: <Widget>[
+                  Text(product['description']),
+                  OutlineButton(
+                    onPressed: (() {}),
+                    color: Colors.pink,
+                    focusColor: Colors.pink,
+                    hoverColor: Colors.pink,
+                    child: Text(
+                      priceString,
+                      style: TextStyle(color: Colors.pink),
+                    ),
+                  )
+                ]
+              )
+            )
           ),
+          /*
           RaisedButton(
             child: Text('Delete ' + product['title']), 
             onPressed: () => {
@@ -44,6 +66,7 @@ class ProductPage extends StatelessWidget {
               )
             }
           )
+          */
         ]
       )
     );

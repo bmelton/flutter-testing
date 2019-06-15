@@ -3,10 +3,8 @@ import 'package:flutter/rendering.dart';
 
 class Products extends StatelessWidget {
   final List<Map> products;
-  final Function addProduct;
-  final Function deleteProduct;
 
-  Products(this.products, this.addProduct, this.deleteProduct);
+  Products(this.products);
 
   Widget _buildProductItem(BuildContext context, int index) {
     return Card(
@@ -14,12 +12,7 @@ class Products extends StatelessWidget {
         children: <Widget>[
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed<bool>(context, '/product/' + index.toString())
-              .then((value) {
-                if(value == true) {
-                  deleteProduct(index);
-                }
-              });
+              Navigator.pushNamed<bool>(context, '/product/' + index.toString());
             },
             child: Image.asset(products[index]['image']),
           ),
@@ -34,19 +27,19 @@ class Products extends StatelessWidget {
 
   @override
   Widget build(BuildContext build) {
-    Widget productCard = Container(
+    Widget productCards = Container(
       child: Center(
         child: Text('No products found.'),
       )
     );
 
     if(products.length > 0) {
-      productCard = ListView.builder(
+      productCards = ListView.builder(
         itemBuilder: _buildProductItem,
         itemCount: products.length,
       );
     } 
 
-    return productCard;
+    return productCards;
   }
 }

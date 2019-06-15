@@ -47,7 +47,7 @@ class _ProductCreatePageState extends State<ProductCreatePage> {
                 }),
             TextField(
               decoration: const InputDecoration(
-                icon: Icon(Icons.money_off),
+                icon: Icon(Icons.attach_money),
                 hintText: '0.00',
                 labelText: 'Price',
               ),
@@ -58,19 +58,21 @@ class _ProductCreatePageState extends State<ProductCreatePage> {
                 });
               },
             ),
-            FlatButton(
-              child: Text('Save'),
+            SizedBox(height: 20.0,),
+            RaisedButton(
+              color: Colors.lime,
+              textColor: Colors.black,
+              child: Text(
+                'Save',
+              ),
               onPressed: (() {
-                print(titleValue);
-                print(descriptionValue);
-                print(priceValue);
-
                 widget.addProducts({
                   'title': titleValue,
                   'description': descriptionValue,
                   'price': priceValue,
                   'image': 'assets/food.jpg',
                 });
+                Navigator.pushReplacementNamed(context, '/home');
               }),
             ),
           ]));

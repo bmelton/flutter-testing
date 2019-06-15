@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'products.dart';
-import 'product_control.dart';
 
 class ProductManager extends StatelessWidget {
   final List<Map> products;
@@ -15,9 +14,8 @@ class ProductManager extends StatelessWidget {
     return Column(children: [
       Container(
         margin: EdgeInsets.all(2.0),
-        child: ProductControl(addProduct),
       ),
-      Expanded( child: Products(products, addProduct, deleteProduct))
+      Expanded( child: Products(products))
     ]);
   }
 }

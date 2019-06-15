@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import './pages/home.dart';
 import './pages/manager.dart';
 import './pages/product.dart';
+import './pages/auth.dart';
 
 void main() {
   runApp(MyApp());
@@ -48,6 +49,8 @@ class _MyAppState extends State<MyApp> {
             _addProduct, 
             _deleteProduct
           ),
+          '/': (BuildContext context) => AuthPage(),
+          '/auth': (BuildContext context) => AuthPage(),
           '/home': (BuildContext context) => HomePage(_products, _addProduct, _deleteProduct),
           '/manageProducts': (BuildContext context) => ManagerPage(
             _products, _addProduct, _deleteProduct
