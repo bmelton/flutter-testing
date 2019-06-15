@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-import './pages/product.dart';
-
 class Products extends StatelessWidget {
   final List<Map> products;
+  final Function addProduct;
+  final Function deleteProduct;
 
-  Products([this.products = const []]);
+  Products(this.products, this.addProduct, this.deleteProduct);
 
   Widget _buildProductItem(BuildContext context, int index) {
     return Card(
@@ -17,6 +17,7 @@ class Products extends StatelessWidget {
               Navigator.pushNamed<bool>(context, '/product/' + index.toString())
               .then((value) {
                 if(value == true) {
+                  deleteProduct(index);
                 }
               });
             },

@@ -17,7 +17,7 @@ class ProductManager extends StatelessWidget {
         margin: EdgeInsets.all(2.0),
         child: ProductControl(addProduct),
       ),
-      Expanded( child: Products(products))
+      Expanded( child: Products(products, addProduct, deleteProduct))
     ]);
   }
 }
