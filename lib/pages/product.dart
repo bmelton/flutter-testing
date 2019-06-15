@@ -15,7 +15,7 @@ class ProductPage extends StatelessWidget {
         children: <Widget>[
           Image.asset(product['image']),
           Center(
-            child: Text('On the product page'),
+            child: Text(product['description']),
           ),
           RaisedButton(
             child: Text('Delete ' + product['title']), 

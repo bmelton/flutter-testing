@@ -5,6 +5,12 @@ import 'product_edit.dart';
 import '../components/drawer.dart';
 
 class ManagerPage extends StatelessWidget {
+  final List<Map> products;
+  final Function addProduct;
+  final Function deleteProduct;
+
+  ManagerPage(this.products, this.addProduct, this.deleteProduct);
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -28,7 +34,7 @@ class ManagerPage extends StatelessWidget {
         ),
         body: TabBarView(
           children: <Widget>[
-            ProductCreatePage(),
+            ProductCreatePage(addProduct),
             ProductEditPage(),
           ],
         )
