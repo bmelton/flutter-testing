@@ -12,9 +12,9 @@ class ProductCreatePage extends StatefulWidget {
 }
 
 class _ProductCreatePageState extends State<ProductCreatePage> {
-  String titleValue = '';
-  String descriptionValue = '';
-  double priceValue;
+  String _titleValue = '';
+  String _descriptionValue = '';
+  double _priceValue;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class _ProductCreatePageState extends State<ProductCreatePage> {
               ),
               onChanged: (String value) {
                 setState(() {
-                  titleValue = value;
+                  _titleValue = value;
                 });
               },
             ),
@@ -42,7 +42,7 @@ class _ProductCreatePageState extends State<ProductCreatePage> {
                 ),
                 onChanged: (String value) {
                   setState(() {
-                    descriptionValue = value;
+                    _descriptionValue = value;
                   });
                 }),
             TextField(
@@ -54,7 +54,7 @@ class _ProductCreatePageState extends State<ProductCreatePage> {
               keyboardType: TextInputType.number,
               onChanged: (String value) {
                 setState(() {
-                  priceValue = double.parse(value);
+                  _priceValue = double.parse(value);
                 });
               },
             ),
@@ -67,9 +67,9 @@ class _ProductCreatePageState extends State<ProductCreatePage> {
               ),
               onPressed: (() {
                 widget.addProducts({
-                  'title': titleValue,
-                  'description': descriptionValue,
-                  'price': priceValue,
+                  'title': _titleValue,
+                  'description': _descriptionValue,
+                  'price': _priceValue,
                   'image': 'assets/food.jpg',
                 });
                 Navigator.pushReplacementNamed(context, '/home');

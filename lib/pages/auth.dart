@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
 
-class AuthPage extends StatelessWidget {
+class AuthPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _AuthPageState();
+  }
+}
+
+class _AuthPageState extends State<AuthPage> {
+  String _emailValue = "";
+  String _passwordValue = "";
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,30 +19,40 @@ class AuthPage extends StatelessWidget {
       ),
       body: Container(
         margin: EdgeInsets.all(12.0),
-        child: Column(
+        child: ListView(
           children: <Widget>[
             TextField(
+              keyboardType: TextInputType.emailAddress,
               decoration: const InputDecoration(
-                labelText: 'username',
+                labelText: 'Email address',
               ),
               onChanged: ((String value) => {
-                print("Username: " + value)
+                setState(() {
+                  _emailValue = value;
+                })
               }),
             ),
             TextField(
               decoration: const InputDecoration(
-                labelText: 'password',
+                labelText: 'Password',
               ),
+              obscureText: true,
               onChanged: ((String value) => {
-                print("Password: " + value)
+                setState(() => {
+                  _passwordValue = value
+                })
               })
             ),
-            RaisedButton(
+            SizedBox(height: 12.0),
+            FlatButton(
+              textColor: Theme.of(context).primaryColor,
               child: Text("Login"),
               onPressed: () {
+                print("Email: " + _emailValue);
+                print("Password: " + _passwordValue);
                 Navigator.pushReplacementNamed(context, '/home');
-              },
-            )
+              }
+            ),
           ]
         ),
         )
