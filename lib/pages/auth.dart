@@ -10,6 +10,7 @@ class AuthPage extends StatefulWidget {
 class _AuthPageState extends State<AuthPage> {
   String _emailValue = "";
   String _passwordValue = "";
+  bool _rememberMe = false;
   
   @override
   Widget build(BuildContext context) {
@@ -44,14 +45,23 @@ class _AuthPageState extends State<AuthPage> {
               })
             ),
             SizedBox(height: 12.0),
-            FlatButton(
-              textColor: Theme.of(context).primaryColor,
-              child: Text("Login"),
-              onPressed: () {
-                print("Email: " + _emailValue);
-                print("Password: " + _passwordValue);
-                Navigator.pushReplacementNamed(context, '/home');
+            SwitchListTile(
+              title: Text("Remember me: "),
+              value: _rememberMe,
+              onChanged: (bool value) {
+                setState(() {
+                  _rememberMe = value;
+                });
               }
+            ),
+            FlatButton(
+                textColor: Theme.of(context).primaryColor,
+                child: Text("Login"),
+                onPressed: () {
+                  print("Email: " + _emailValue);
+                  print("Password: " + _passwordValue);
+                  Navigator.pushReplacementNamed(context, '/home');
+                }
             ),
           ]
         ),
